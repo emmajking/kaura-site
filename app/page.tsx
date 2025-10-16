@@ -3,7 +3,6 @@
 import MotionTitle from '@/components/MotionTitle';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -28,7 +27,7 @@ export default function Home() {
                   Kaura
                 </span>{' '}
                 is not merely a company.<br />
-                <em>It's a presence.</em>
+                <em>It&apos;s a presence.</em>
               </div>
             </MotionTitle>
           </div>
