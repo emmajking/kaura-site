@@ -44,7 +44,7 @@ export default function Home() {
           <ul className="mt-4 text-sm opacity-70 space-y-1 [font-family:var(--font-inter)]">
             {[
               'Invisible care, Sovereign rigor',
-              'Residences • Penthouses • Yachts • Art spaces',
+              'Residences  Penthouses  Yachts  Art spaces',
               'Born in Montreal. Present wherever excellence resides.',
             ].map((t) => (
               <li key={t}>• {t}</li>
