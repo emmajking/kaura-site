@@ -193,3 +193,63 @@ html, body {
 
 /* Petites notes */
 .small-note{ color:var(--kaura-muted); font-size:14px; }
+/* ==== SIGNATURES — polish minimal =================================== */
+
+/* H2 un peu plus grand/ferme */
+.h2-strong {
+  font-family: var(--font-playfair, serif);
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  line-height: 1.18;
+}
+
+/* Cartes “verre fumé” plus lisibles */
+.card-luxe {
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 30px rgba(0,0,0,.25);
+}
+
+/* Légère élévation au hover (desktop) */
+.card-elev {
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.card-elev:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+  border-color: rgba(255,255,255,.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 16px 36px rgba(0,0,0,.28);
+}
+
+/* Bandeau CTA plus “clair” et resserré */
+.card-cta {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 20px;
+  border-radius: 18px;
+}
+
+/* Overlay d’image discret sur hover (sans gêner le texte) */
+.card-imgveil {
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.card:hover .card-imgveil { opacity: .12; }
+
+/* Liens sans soulignement par défaut (email = utilitaire) */
+a { text-decoration: none; color: inherit; }
+.link-underline { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Halo un poil plus équilibré sur les pages très “cartes” */
+.kaura-page {
+  background:
+    radial-gradient(1100px 620px at 26% 12%, rgba(245,190,60,.065), transparent 60%),
+    radial-gradient(900px 520px at 78% 76%, rgba(245,190,60,.045), transparent 60%),
+    var(--kaura-bg);
+}
+

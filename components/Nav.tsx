@@ -25,7 +25,7 @@ export function Nav() {
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        {/* Logo */}
+        {/* Logo + Titre (cliquables) */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-black to-[#0a0a0a] p-0.5 border border-white/10 shadow-md">
             <Image
@@ -36,14 +36,18 @@ export function Nav() {
               priority
             />
           </div>
-          <div>
-            <div className="font-semibold tracking-wide text-[#f5f5f5]">LA MAISON KAURA</div>
-            <div className="text-xs opacity-70 text-[#c0c0c0]">Your Pinnacle Care Spaces</div>
+          <div className="font-semibold tracking-wide text-[#f5f5f5]">
+            LA MAISON KAURA
           </div>
         </Link>
 
+        {/* Sous-titre (non cliquable) */}
+        <span className="hidden sm:inline text-xs opacity-70 text-[#c0c0c0]">
+          Your Pinnacle Care Spaces
+        </span>
+
         {/* Desktop Nav (pastille) */}
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav aria-label="Primary" className="hidden md:block ml-auto">
           <div className="nav-pill">
             {links.map((l) => (
               <Link
@@ -61,12 +65,12 @@ export function Nav() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 rounded-lg border border-white/10 hover:bg-white/5"
+          className="md:hidden ml-auto h-9 w-9 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/8 transition"
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-nav"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
