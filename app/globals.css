@@ -1,26 +1,21 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #c9ad5a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+html, body { height: 100%; }
+body { background: #0a0a0a; color: #e6e6e7; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+.btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-[#eaeaea] transition; }
+.btn:hover { @apply -translate-y-0.5 bg-white/10; }
+.btn-gold { background: var(--gold); color: #111; border-color: transparent; }
+.btn-gold:hover { filter: brightness(1.03); }
+.card { @apply border border-white/10 rounded-2xl bg-white/5 p-4; }
+.card-hover { @apply transition; }
+.card-hover:hover { @apply -translate-y-1 scale-[1.01] shadow-kaura-card; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.10); }
+.navbtn { @apply bg-transparent text-[#cfcfd4] px-3 py-1 rounded-xl border border-transparent transition; }
+.navbtn:hover { box-shadow: 0 0 0 1px rgba(245,190,60,.10); border-color: rgba(245,190,60,.10); color: white; }
+.navbtn.active { background: var(--gold); color: #111; }

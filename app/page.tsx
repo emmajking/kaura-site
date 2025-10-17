@@ -131,7 +131,6 @@ export default function Home() {
             <div className="card [font-family:var(--font-inter)] space-y-2">
               <div className="[font-family:var(--font-playfair)] text-[1.05rem]">Coordinates</div>
               <div>Montréal, QC — Canada</div>
-              <div>Private line: +1 (___) ___-____</div>
               <div>Email: <a className="underline" href="mailto:direction@lamaisonkaura.com">direction@lamaisonkaura.com</a></div>
               <div className="text-sm opacity-70 mt-3">For ultra-discreet matters, request our encrypted channel on the intro call.</div>
             </div>
