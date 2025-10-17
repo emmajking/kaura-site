@@ -6,10 +6,10 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+    <main className="kaura-page h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       {/* HOME */}
       <section id="home" className="snap-start min-h-screen flex items-center">
-        <div className="max-w-5xl mx-auto px-4 w-full">
+        <div className="section w-full">
           <div className="text-xs opacity-75 inline-block border border-white/10 rounded-full px-3 py-1 bg-white/5">
             A private presence inside your spaces
           </div>
@@ -51,9 +51,10 @@ export default function Home() {
             ))}
           </ul>
 
-          <div className="relative rounded-2xl border border-white/10 mt-8 aspect-[16/9] overflow-hidden">
+          {/* encadrement vidéo avec styles globaux */}
+          <div className="hero-video relative mt-8 aspect-[16/9] overflow-hidden">
             <video
-              src="/pasmal.mp4"
+              src="/pasmal.mp4" /* ← on ne touche pas à la source */
               autoPlay
               muted
               loop
@@ -69,7 +70,7 @@ export default function Home() {
 
       {/* THE HOUSE */}
       <section id="house" className="snap-start min-h-screen flex items-center">
-        <div className="max-w-5xl mx-auto px-4 w-full">
+        <div className="section w-full">
           <MotionTitle as="h2" className="[font-family:var(--font-playfair)]">
             <div style={{ fontSize: 'clamp(1.6rem,3.2vw,2.4rem)' }}>The House</div>
           </MotionTitle>
@@ -82,7 +83,7 @@ export default function Home() {
             {['/entree.jpg', '/carte.jpg', '/cuirjet.jpg'].map((src, i) => (
               <div key={i} className="relative overflow-hidden rounded-xl border border-white/10 aspect-[4/3]">
                 <Image
-                  src={src}
+                  src={src} /* ← on ne touche pas aux médias */
                   alt=""
                   fill
                   className="object-cover"
@@ -96,7 +97,7 @@ export default function Home() {
 
       {/* SIGNATURES */}
       <section id="signatures" className="snap-start min-h-screen flex items-center">
-        <div className="max-w-5xl mx-auto px-4 w-full">
+        <div className="section w-full">
           <MotionTitle as="h2" className="[font-family:var(--font-playfair)]">
             <div style={{ fontSize: 'clamp(1.6rem,3.2vw,2.4rem)' }}>Signatures</div>
           </MotionTitle>
@@ -114,16 +115,17 @@ export default function Home() {
 
       {/* CONTACT */}
       <section id="contact" className="snap-start min-h-screen flex items-center">
-        <div className="max-w-5xl mx-auto px-4 w-full">
+        <div className="section w-full">
           <MotionTitle as="h2" className="[font-family:var(--font-playfair)]">
             <div style={{ fontSize: 'clamp(1.6rem,3.2vw,2.4rem)' }}>Get in touch</div>
           </MotionTitle>
 
           <div className="grid md:grid-cols-2 gap-4 mt-6">
+            {/* on remplace juste les classes par .card / .input / .textarea */}
             <form className="card grid gap-2 [font-family:var(--font-inter)]" onSubmit={(e) => e.preventDefault()}>
-              <input className="bg-black/40 border border-white/15 rounded-xl px-3 py-2" placeholder="Full name" />
-              <input className="bg-black/40 border border-white/15 rounded-xl px-3 py-2" placeholder="Work email" type="email" />
-              <textarea className="bg-black/40 border border-white/15 rounded-xl px-3 py-2 min-h-[8rem]" placeholder="Your message" />
+              <input className="input" placeholder="Full name" />
+              <input className="input" placeholder="Work email" type="email" />
+              <textarea className="input textarea" placeholder="Your message" />
               <button className="btn btn-gold" type="submit">Send</button>
               <div className="text-xs opacity-60">Each message is read with the same care as our spaces.</div>
             </form>
@@ -140,7 +142,7 @@ export default function Home() {
 
       {/* NOTES */}
       <section id="notes" className="snap-start min-h-screen flex items-center">
-        <div className="max-w-5xl mx-auto px-4 w-full text-center">
+        <div className="section w-full text-center">
           <MotionTitle as="h2" className="[font-family:var(--font-playfair)]">
             <div style={{ fontSize: 'clamp(1.4rem,3vw,2rem)' }}>Present, but silent.</div>
           </MotionTitle>
@@ -149,6 +151,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
