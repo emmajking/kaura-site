@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import type { Transition } from 'framer-motion';
 
 // États d'animation
 const titleTransition = {
@@ -44,7 +43,6 @@ export default function MotionTitle({
     <motion.div
       initial={titleHover.initial}
       whileHover={titleHover.whileHover}
-      transition={titleTransition}
       className="inline-block rounded-lg"
     >
       {React.createElement(Component, { className }, children)}
