@@ -5,23 +5,13 @@
 
 /* ————————————————————————————————————————————————
    LA MAISON KAURA — GLOBAL STYLES
-   Signature : calme, feutré, souverain
 ———————————————————————————————————————————————— */
-
-/* Couleurs principales */
 :root {
   --gold: #c9ad5a;
 }
 
-/* ————————————————————————————————————————————————
-   BASE
-———————————————————————————————————————————————— */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
   height: 100%;
   background: #0a0a0a;
@@ -32,62 +22,84 @@ html, body {
 }
 
 /* ————————————————————————————————————————————————
-   COMPOSANTS AVEC @apply  → doivent être dans @layer components
+   Composants (CSS pur – pas de @apply)
 ———————————————————————————————————————————————— */
-@layer components {
-  /* NAVIGATION */
-  
-  .navbtn {
-    @apply bg-transparent text-[#cfcfd4] px-3 py-1 rounded-xl border border-transparent transition;
-  }
-  .navbtn:hover {
-    /* CSS pur OK en dehors de @apply */
-    box-shadow: 0 0 10px rgba(245,190,60,.10);
-    border-color: rgba(255,255,255,.10);
-    color: #ffffff;
-  }
-  .navbtn.active {
-    background: var(--gold);
-    color: #111;
-  }
 
-  /* BOUTONS GÉNÉRAUX */
-  .btn {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-[#eaeaea] transition;
-  }
-  .btn:hover {
-    @apply -translate-y-0.5 bg-white/10;
-  }
-  .btn-gold {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl transition;
-    background: var(--gold);
-    color: #111;
-    border-color: transparent;
-  }
-  .btn-gold:hover {
-    filter: brightness(1.05);
-  }
-
-  /* CARTES / BLOCS */
-  .card {
-    @apply border border-white/10 rounded-2xl bg-white/5 p-4 transition;
-  }
-  .card:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 10px 30px rgba(245,190,60,0.08);
-  }
+/* NAV */
+.navbtn {
+  background: transparent;
+  color: #cfcfd4;
+  padding-left: 0.75rem;   /* px-3 */
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;    /* py-1 */
+  padding-bottom: 0.25rem;
+  border-radius: 0.75rem;  /* rounded-xl */
+  border: 1px solid transparent;
+  transition: all .2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;             /* gap-2, utile si icône+texte */
+}
+.navbtn:hover {
+  box-shadow: 0 0 10px rgba(245,190,60,.10);
+  border-color: rgba(255,255,255,.10);
+  color: #ffffff;
+}
+.navbtn.active {
+  background: var(--gold);
+  color: #111;
 }
 
-/* ————————————————————————————————————————————————
-   ANIMATIONS & DÉCORS (pas d’@apply → pas besoin de @layer)
-———————————————————————————————————————————————— */
+/* Boutons */
+.btn {
+  display: inline-flex;              /* inline-flex */
+  align-items: center;               /* items-center */
+  gap: 0.5rem;                       /* gap-2 */
+  padding: 0.5rem 1rem;              /* py-2 px-4 */
+  border-radius: 0.75rem;            /* rounded-xl */
+  border: 1px solid rgba(255,255,255,0.10); /* border-white/10 */
+  background: rgba(255,255,255,0.05);       /* bg-white/5 */
+  color: #eaeaea;
+  transition: transform .2s ease, background-color .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn:hover {
+  transform: translateY(-0.125rem);  /* -translate-y-0.5 */
+  background: rgba(255,255,255,0.10);/* bg-white/10 */
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: filter .2s ease, transform .2s ease;
+  background: var(--gold);
+  color: #111;
+  border: 1px solid transparent;
+}
+.btn-gold:hover { filter: brightness(1.05); }
+
+/* Cards */
+.card {
+  border: 1px solid rgba(255,255,255,0.10);   /* border-white/10 */
+  border-radius: 1rem;                        /* rounded-2xl */
+  background: rgba(255,255,255,0.05);         /* bg-white/5 */
+  padding: 1rem;                               /* p-4 */
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(245,190,60,0.08);
+}
+
+/* Halo */
 @keyframes kaura-halo-sheen {
   0%   { transform: translateX(-120%); opacity: 0; }
   25%  { opacity: .9; }
   55%  { opacity: .55; }
   100% { transform: translateX(120%); opacity: 0; }
 }
-
 .halo {
   background: radial-gradient(circle at 50% 30%, rgba(245,190,60,0.05), transparent 70%);
   pointer-events: none;
