@@ -36,6 +36,7 @@ html, body {
 ———————————————————————————————————————————————— */
 @layer components {
   /* NAVIGATION */
+  
   .navbtn {
     @apply bg-transparent text-[#cfcfd4] px-3 py-1 rounded-xl border border-transparent transition;
   }
