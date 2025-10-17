@@ -1,21 +1,94 @@
+/* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ————————————————————————————————————————————————
+   LA MAISON KAURA — GLOBAL STYLES
+   Signature : calme, feutré, souverain
+———————————————————————————————————————————————— */
+
+/* Couleurs principales */
 :root {
   --gold: #c9ad5a;
 }
 
-html, body { height: 100%; }
-body { background: #0a0a0a; color: #e6e6e7; }
+/* ————————————————————————————————————————————————
+   BASE
+———————————————————————————————————————————————— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-[#eaeaea] transition; }
-.btn:hover { @apply -translate-y-0.5 bg-white/10; }
-.btn-gold { background: var(--gold); color: #111; border-color: transparent; }
-.btn-gold:hover { filter: brightness(1.03); }
-.card { @apply border border-white/10 rounded-2xl bg-white/5 p-4; }
-.card-hover { @apply transition; }
-.card-hover:hover { @apply -translate-y-1 scale-[1.01] shadow-kaura-card; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.10); }
-.navbtn { @apply bg-transparent text-[#cfcfd4] px-3 py-1 rounded-xl border border-transparent transition; }
-.navbtn:hover { box-shadow: 0 0 0 1px rgba(245,190,60,.10); border-color: rgba(245,190,60,.10); color: white; }
-.navbtn.active { background: var(--gold); color: #111; }
+html, body {
+  height: 100%;
+  background: #0a0a0a;
+  color: #e6e6e7;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ————————————————————————————————————————————————
+   COMPOSANTS AVEC @apply  → doivent être dans @layer components
+———————————————————————————————————————————————— */
+@layer components {
+  /* NAVIGATION */
+  .navbtn {
+    @apply bg-transparent text-[#cfcfd4] px-3 py-1 rounded-xl border border-transparent transition;
+  }
+  .navbtn:hover {
+    /* CSS pur OK en dehors de @apply */
+    box-shadow: 0 0 10px rgba(245,190,60,.10);
+    border-color: rgba(255,255,255,.10);
+    color: #ffffff;
+  }
+  .navbtn.active {
+    background: var(--gold);
+    color: #111;
+  }
+
+  /* BOUTONS GÉNÉRAUX */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-[#eaeaea] transition;
+  }
+  .btn:hover {
+    @apply -translate-y-0.5 bg-white/10;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl transition;
+    background: var(--gold);
+    color: #111;
+    border-color: transparent;
+  }
+  .btn-gold:hover {
+    filter: brightness(1.05);
+  }
+
+  /* CARTES / BLOCS */
+  .card {
+    @apply border border-white/10 rounded-2xl bg-white/5 p-4 transition;
+  }
+  .card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 10px 30px rgba(245,190,60,0.08);
+  }
+}
+
+/* ————————————————————————————————————————————————
+   ANIMATIONS & DÉCORS (pas d’@apply → pas besoin de @layer)
+———————————————————————————————————————————————— */
+@keyframes kaura-halo-sheen {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  25%  { opacity: .9; }
+  55%  { opacity: .55; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+.halo {
+  background: radial-gradient(circle at 50% 30%, rgba(245,190,60,0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
