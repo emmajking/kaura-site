@@ -19,34 +19,35 @@ export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // ferme le menu mobile quand la route change
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        {/* Logo + Titre (cliquables) */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-black to-[#0a0a0a] p-0.5 border border-white/10 shadow-md">
+        {/* ——— LOGO + MARQUE ——— */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-black to-[#0a0a0a] p-[2px] border border-white/10 shadow-md overflow-hidden">
             <Image
               src="/Logo.jpg"
               alt="La Maison Kaura"
               fill
-              className="rounded-xl object-contain p-0.5"
+              className="object-contain rounded-xl"
               priority
             />
           </div>
-          <div className="font-semibold tracking-wide text-[#f5f5f5]">
-            LA MAISON KAURA
+          <div className="leading-tight tracking-[0.02em] pr-2">
+            <div className="font-semibold text-[0.95rem] text-[#f5f5f5] group-hover:text-[#fff] transition-colors">
+              LA MAISON KAURA
+            </div>
+            <div className="text-[0.72rem] text-[#bdbdbd] mt-[1px]">
+              Your Pinnacle Care Spaces
+            </div>
           </div>
         </Link>
 
-        {/* Sous-titre (non cliquable) */}
-        <span className="hidden sm:inline text-xs opacity-70 text-[#c0c0c0]">
-          Your Pinnacle Care Spaces
-        </span>
-
-        {/* Desktop Nav (pastille) */}
+        {/* ——— NAVIGATION DESKTOP ——— */}
         <nav aria-label="Primary" className="hidden md:block ml-auto">
           <div className="nav-pill">
             {links.map((l) => (
@@ -62,19 +63,19 @@ export function Nav() {
           </div>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* ——— HAMBURGER MOBILE ——— */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden ml-auto h-9 w-9 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/8 transition"
+          className="md:hidden ml-auto p-2 rounded-lg border border-white/10 bg-[#1a1a1a]/40 hover:bg-[#2a2a2a]/60 transition-colors"
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-nav"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} color="#c9ad5a" /> : <Menu size={22} color="#c9ad5a" />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* ——— DROPDOWN MOBILE ——— */}
       <AnimatePresence>
         {open && (
           <motion.div

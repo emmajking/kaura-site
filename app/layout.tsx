@@ -50,7 +50,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} min-h-screen`}>
+      <body className={'${inter.variable} ${playfair.variable} min-h-screen'}>
         {/* HEADER — Nav rend déjà <header class="navbar">… */}
         <Nav />
 

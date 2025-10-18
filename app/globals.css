@@ -6,250 +6,241 @@
 /* ————————————————————————————————————————————————
    LA MAISON KAURA — GLOBAL STYLES
 ———————————————————————————————————————————————— */
-:root {
-  --gold: #c9ad5a;
+:root{
+  --gold:#c9ad5a;                 /* or mat */
+  --kaura-bg:#0a0a0a;             /* noir chaud */
+  --kaura-text:#e9e6df;           /* blanc chaud */
+  --kaura-muted:#b9b4a8;          /* gris perlé */
+  --kaura-border:rgba(255,255,255,.10);
 }
 
 /* Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body {
-  height: 100%;
-  background: #0a0a0a;
-  color: #e6e6e7;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  height:100%;
+  background:#0a0a0a;
+  color:#e6e6e7;
+  font-family:var(--font-inter),system-ui,sans-serif;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+
+/* Liens (désoulignés par défaut) */
+a{ text-decoration:none; color:inherit; }
+.link-underline{ text-decoration:underline; text-underline-offset:2px; }
+
+/* ————————————————————————————————————————————————
+   NAV
+———————————————————————————————————————————————— */
+.navbar{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(10,10,10,.72);
+  border-bottom:1px solid var(--kaura-border);
+}
+.navbar-inner{
+  max-width:1200px; margin-inline:auto;
+  padding:12px 16px;
+  display:flex; align-items:center; gap:14px;
+}
+
+/* pastille de navigation (desktop) */
+.nav-pill{
+  margin-left:auto; display:flex; gap:8px; padding:6px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* boutons de nav (tu les utilises déjà) */
+.navbtn{
+  background:transparent;
+  color:#cfcfd4;
+  padding:.25rem .75rem;                /* py-1 px-3 */
+  border-radius:.75rem;                  /* rounded-xl */
+  border:1px solid transparent;
+  transition:all .2s ease;
+  display:inline-flex; align-items:center; gap:.5rem;
+}
+.navbtn:hover{
+  box-shadow:0 0 10px rgba(245,190,60,.10);
+  border-color:rgba(255,255,255,.10);
+  color:#fff;
+}
+.navbtn.active{
+  background:var(--gold);
+  color:#111;
+  box-shadow:0 0 0 1px rgba(0,0,0,.35) inset, 0 6px 16px rgba(245,190,60,.22);
 }
 
 /* ————————————————————————————————————————————————
-   Composants (CSS pur – pas de @apply)
+   Boutons
 ———————————————————————————————————————————————— */
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem 1rem; border-radius:.75rem;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.05);
+  color:#eaeaea;
+  transition:transform .2s ease, background-color .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,.10); }
 
-/* NAV */
-.navbtn {
-  background: transparent;
-  color: #cfcfd4;
-  padding-left: 0.75rem;   /* px-3 */
-  padding-right: 0.75rem;
-  padding-top: 0.25rem;    /* py-1 */
-  padding-bottom: 0.25rem;
-  border-radius: 0.75rem;  /* rounded-xl */
-  border: 1px solid transparent;
-  transition: all .2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;             /* gap-2, utile si icône+texte */
+.btn-gold{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem 1rem; border-radius:.75rem;
+  background:var(--gold); color:#111; border:1px solid transparent;
+  box-shadow:0 6px 18px rgba(201,173,90,.20);
+  transition: filter .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.navbtn:hover {
-  box-shadow: 0 0 10px rgba(245,190,60,.10);
-  border-color: rgba(255,255,255,.10);
-  color: #ffffff;
-}
-.navbtn.active {
-  background: var(--gold);
-  color: #111;
-}
+.btn-gold:hover{ filter:brightness(1.05); transform:translateY(-1px); }
 
-/* Boutons */
-.btn {
-  display: inline-flex;              /* inline-flex */
-  align-items: center;               /* items-center */
-  gap: 0.5rem;                       /* gap-2 */
-  padding: 0.5rem 1rem;              /* py-2 px-4 */
-  border-radius: 0.75rem;            /* rounded-xl */
-  border: 1px solid rgba(255,255,255,0.10); /* border-white/10 */
-  background: rgba(255,255,255,0.05);       /* bg-white/5 */
-  color: #eaeaea;
-  transition: transform .2s ease, background-color .2s ease, filter .2s ease, box-shadow .2s ease;
+/* ————————————————————————————————————————————————
+   Cards (verre fumé)
+———————————————————————————————————————————————— */
+.card{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:1rem;
+  background:rgba(255,255,255,.05);
+  padding:1rem;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
 }
-.btn:hover {
-  transform: translateY(-0.125rem);  /* -translate-y-0.5 */
-  background: rgba(255,255,255,0.10);/* bg-white/10 */
+.card:hover{
+  transform:translateY(-2px) scale(1.01);
+  box-shadow:0 10px 30px rgba(245,190,60,.08);
 }
 
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
-  transition: filter .2s ease, transform .2s ease;
-  background: var(--gold);
-  color: #111;
-  border: 1px solid transparent;
+/* variantes luxe + hover doux */
+.card-luxe{
+  background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border-color:rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 12px 30px rgba(0,0,0,.25);
 }
-.btn-gold:hover { filter: brightness(1.05); }
-
-/* Cards */
-.card {
-  border: 1px solid rgba(255,255,255,0.10);   /* border-white/10 */
-  border-radius: 1rem;                        /* rounded-2xl */
-  background: rgba(255,255,255,0.05);         /* bg-white/5 */
-  padding: 1rem;                               /* p-4 */
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.card:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 10px 30px rgba(245,190,60,0.08);
+.card-elev:hover{
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+  border-color:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 16px 36px rgba(0,0,0,.28);
 }
 
-/* Halo */
-@keyframes kaura-halo-sheen {
-  0%   { transform: translateX(-120%); opacity: 0; }
-  25%  { opacity: .9; }
-  55%  { opacity: .55; }
-  100% { transform: translateX(120%); opacity: 0; }
-}
-.halo {
-  background: radial-gradient(circle at 50% 30%, rgba(245,190,60,0.05), transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-/* ——— KAURA • ADD-ONS (à coller tout en bas) ——————————————— */
-:root{
-  --kaura-bg:#0a0a0a;
-  --kaura-text:#e9e6df;
-  --kaura-muted:#b9b4a8;
-  --kaura-border: rgba(255,255,255,.08);
-  --kaura-gold: var(--gold);
+/* bandeau CTA plus clair */
+.card-cta{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+  padding:20px; border-radius:18px;
 }
 
-/* Halo global discret (page wrapper) */
+/* voile d’image discret au hover (utilisé dans Signatures) */
+.card-imgveil{ opacity:0; transition:opacity .18s ease; }
+.card:hover .card-imgveil{ opacity:.12; }
+
+/* ————————————————————————————————————————————————
+   Titres utilitaires
+———————————————————————————————————————————————— */
+.h1{ font-family:var(--font-playfair,serif); font-size:clamp(32px,5vw,54px); line-height:1.1; font-weight:800; }
+.h2{ font-family:var(--font-playfair,serif); font-size:clamp(26px,3.6vw,38px); line-height:1.2; font-weight:700; }
+.h2-strong{
+  font-family:var(--font-playfair,serif);
+  font-weight:700; letter-spacing:-.2px;
+  font-size:clamp(1.9rem,3.6vw,2.8rem); line-height:1.18;
+}
+.lead{ color:var(--kaura-muted); font-size:clamp(16px,2vw,18px); }
+
+/* Section wrapper */
+.section{ max-width:1200px; margin-inline:auto; padding:80px 16px; }
+
+/* ————————————————————————————————————————————————
+   Form fields premium (optionnels)
+———————————————————————————————————————————————— */
+.input{
+  width:100%; padding:14px 16px; color:var(--kaura-text);
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--kaura-border);
+  border-radius:16px; outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.input::placeholder{ color:rgba(233,230,223,.60); letter-spacing:.2px; }
+.input:focus{
+  border-color:rgba(245,190,60,.55);
+  box-shadow:0 0 0 3px rgba(245,190,60,.20);
+  background:rgba(255,255,255,.05);
+}
+.textarea{ min-height:160px; resize:vertical; }
+
+/* Encadrement media (hero vidéo/image) */
+.hero-video{ border-radius:1rem; overflow:hidden; border:1px solid var(--kaura-border); background:#0d0d0d; }
+
+/* Grille Signatures */
+.grid-signatures{ display:grid; gap:18px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:980px){ .grid-signatures{ grid-template-columns:1fr; } }
+
+/* Notes */
+.small-note{ color:var(--kaura-muted); font-size:14px; }
+
+/* ————————————————————————————————————————————————
+   Halo (fond global)
+———————————————————————————————————————————————— */
 .kaura-page{
-  position: relative;
-  min-height: 100dvh;
+  position:relative; min-height:100dvh; isolation:isolate;
   background:
     radial-gradient(1100px 620px at 28% 10%, rgba(245,190,60,.07), transparent 60%),
     radial-gradient(900px 520px at 78% 72%, rgba(245,190,60,.05), transparent 60%),
     var(--kaura-bg);
-  isolation: isolate;
 }
 
-/* Navbar sticky + blur */
-.navbar{
-  position: sticky; top:0; z-index:50;
-  backdrop-filter: blur(12px);
-  background: rgba(10,10,10,.70);
-  border-bottom: 1px solid var(--kaura-border);
+/* animation optionnelle */
+@keyframes kaura-halo-sheen{
+  0%{ transform:translateX(-120%); opacity:0; }
+  25%{ opacity:.9; }
+  55%{ opacity:.55; }
+  100%{ transform:translateX(120%); opacity:0; }
 }
-.navbar-inner{
-  max-width:1200px; margin:0 auto; padding:12px 16px;
-  display:flex; align-items:center; gap:14px;
+.halo{
+  background:radial-gradient(circle at 50% 30%, rgba(245,190,60,.05), transparent 70%);
+  pointer-events:none; z-index:0;
+}
+/* ——— NAV KAURA POLISH ——— */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
 }
 
-/* Pastille de navigation (desktop) */
-.nav-pill{
-  margin-left:auto; display:flex; gap:8px; padding:6px;
-  border-radius:999px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid var(--kaura-border);
+.navbar {
+  backdrop-filter: blur(14px);
+  background: rgba(10, 10, 10, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.nav-pill a{ text-decoration:none; }
-.navbtn.active{
-  /* tu as déjà le fond or — on ajoute un léger relief */
+
+.nav-pill {
+  display: flex;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbtn {
+  font-size: 0.9rem;
+  letter-spacing: 0.015em;
+}
+
+.navbtn.active {
+  background: var(--gold);
+  color: #111;
   box-shadow: 0 0 0 1px rgba(0,0,0,.35) inset, 0 6px 16px rgba(245,190,60,.22);
 }
 
-/* Titres utilitaires */
-.h1{ font-family: var(--font-playfair, serif); font-size: clamp(32px,5vw,54px); line-height:1.1; font-weight:800; }
-.h2{ font-family: var(--font-playfair, serif); font-size: clamp(26px,3.6vw,38px); line-height:1.2; font-weight:700; }
-.lead{ color:var(--kaura-muted); font-size: clamp(16px,2vw,18px); }
-
-/* Section wrapper max-width */
-.section{ max-width:1200px; margin:0 auto; padding:80px 16px; }
-
-/* Cards : léger verre fumé (compat avec ta .card existante) */
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  border: 1px solid var(--kaura-border);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 10px 25px rgba(0,0,0,.25);
+/* — Hamburger ton Kaura */
+button[aria-label='Toggle menu'] svg {
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
-
-/* Form fields premium */
-.input{
-  width:100%; padding:14px 16px; color:var(--kaura-text);
-  background: rgba(255,255,255,.03);
-  border: 1px solid var(--kaura-border);
-  border-radius: 16px; outline: none;
-  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+button[aria-label='Toggle menu']:hover svg {
+  transform: scale(1.08);
+  filter: brightness(1.15);
 }
-.input::placeholder{ color: rgba(233,230,223,.6); letter-spacing:.2px; }
-.input:focus{
-  border-color: rgba(245,190,60,.55);
-  box-shadow: 0 0 0 3px rgba(245,190,60,.20);
-  background: rgba(255,255,255,.05);
-}
-.textarea{ min-height:160px; resize: vertical; }
-
-/* Encadrement vidéo du hero */
-.hero-video{ border-radius: 1rem; overflow:hidden; border:1px solid var(--kaura-border); background:#0d0d0d; }
-
-/* Grille Signatures (3 colonnes -> 1 en mobile) */
-.grid-signatures{
-  display:grid; gap:18px;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-}
-@media (max-width:980px){ .grid-signatures{ grid-template-columns:1fr; } }
-
-/* Petites notes */
-.small-note{ color:var(--kaura-muted); font-size:14px; }
-/* ==== SIGNATURES — polish minimal =================================== */
-
-/* H2 un peu plus grand/ferme */
-.h2-strong {
-  font-family: var(--font-playfair, serif);
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
-  line-height: 1.18;
-}
-
-/* Cartes “verre fumé” plus lisibles */
-.card-luxe {
-  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
-  border: 1px solid rgba(255,255,255,.10);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 12px 30px rgba(0,0,0,.25);
-}
-
-/* Légère élévation au hover (desktop) */
-.card-elev {
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
-}
-.card-elev:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-  border-color: rgba(255,255,255,.14);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.07),
-    0 16px 36px rgba(0,0,0,.28);
-}
-
-/* Bandeau CTA plus “clair” et resserré */
-.card-cta {
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border: 1px solid rgba(255,255,255,.12);
-  padding: 20px;
-  border-radius: 18px;
-}
-
-/* Overlay d’image discret sur hover (sans gêner le texte) */
-.card-imgveil {
-  opacity: 0;
-  transition: opacity .18s ease;
-}
-.card:hover .card-imgveil { opacity: .12; }
-
-/* Liens sans soulignement par défaut (email = utilitaire) */
-a { text-decoration: none; color: inherit; }
-.link-underline { text-decoration: underline; text-underline-offset: 2px; }
-
-/* Halo un poil plus équilibré sur les pages très “cartes” */
-.kaura-page {
-  background:
-    radial-gradient(1100px 620px at 26% 12%, rgba(245,190,60,.065), transparent 60%),
-    radial-gradient(900px 520px at 78% 76%, rgba(245,190,60,.045), transparent 60%),
-    var(--kaura-bg);
-}
-
